@@ -10,13 +10,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import '../../shared/shared.dart' as _s;
-import '../../shared/shared.dart'
-    show
-        rfc822ToJson,
-        iso8601ToJson,
-        unixTimestampToJson,
-        nonNullableTimeStampFromJson,
-        timeStampFromJson;
+import '../../shared/shared.dart' show rfc822ToJson, iso8601ToJson, unixTimestampToJson, nonNullableTimeStampFromJson, timeStampFromJson;
 
 export '../../shared/shared.dart' show AwsClientCredentials;
 
@@ -27,6 +21,7 @@ export '../../shared/shared.dart' show AwsClientCredentials;
 /// User Guide</a>.
 class Acm {
   final _s.JsonProtocol _protocol;
+
   Acm({
     required String region,
     _s.AwsClientCredentials? credentials,
@@ -98,10 +93,7 @@ class Acm {
     required String certificateArn,
     required List<Tag> tags,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.AddTagsToCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.AddTagsToCertificate'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -145,10 +137,7 @@ class Acm {
   Future<void> deleteCertificate({
     required String certificateArn,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.DeleteCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.DeleteCertificate'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -182,10 +171,7 @@ class Acm {
   Future<DescribeCertificateResponse> describeCertificate({
     required String certificateArn,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.DescribeCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.DescribeCertificate'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -236,10 +222,7 @@ class Acm {
     required String certificateArn,
     required Uint8List passphrase,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.ExportCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.ExportCertificate'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -261,10 +244,7 @@ class Acm {
   /// May throw [AccessDeniedException].
   /// May throw [ThrottlingException].
   Future<GetAccountConfigurationResponse> getAccountConfiguration() async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.GetAccountConfiguration'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.GetAccountConfiguration'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -301,10 +281,7 @@ class Acm {
   Future<GetCertificateResponse> getCertificate({
     required String certificateArn,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.GetCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.GetCertificate'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -423,10 +400,7 @@ class Acm {
     Uint8List? certificateChain,
     List<Tag>? tags,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.ImportCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.ImportCertificate'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -437,8 +411,7 @@ class Acm {
         'Certificate': base64Encode(certificate),
         'PrivateKey': base64Encode(privateKey),
         if (certificateArn != null) 'CertificateArn': certificateArn,
-        if (certificateChain != null)
-          'CertificateChain': base64Encode(certificateChain),
+        if (certificateChain != null) 'CertificateChain': base64Encode(certificateChain),
         if (tags != null) 'Tags': tags,
       },
     );
@@ -500,10 +473,7 @@ class Acm {
       1,
       1000,
     );
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.ListCertificates'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.ListCertificates'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -511,9 +481,7 @@ class Acm {
       // TODO queryParams
       headers: headers,
       payload: {
-        if (certificateStatuses != null)
-          'CertificateStatuses':
-              certificateStatuses.map((e) => e.value).toList(),
+        if (certificateStatuses != null) 'CertificateStatuses': certificateStatuses.map((e) => e.value).toList(),
         if (includes != null) 'Includes': includes,
         if (maxItems != null) 'MaxItems': maxItems,
         if (nextToken != null) 'NextToken': nextToken,
@@ -545,10 +513,7 @@ class Acm {
   Future<ListTagsForCertificateResponse> listTagsForCertificate({
     required String certificateArn,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.ListTagsForCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.ListTagsForCertificate'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -590,10 +555,7 @@ class Acm {
     required String idempotencyToken,
     ExpiryEventsConfiguration? expiryEvents,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.PutAccountConfiguration'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.PutAccountConfiguration'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -640,10 +602,7 @@ class Acm {
     required String certificateArn,
     required List<Tag> tags,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.RemoveTagsFromCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.RemoveTagsFromCertificate'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -681,10 +640,7 @@ class Acm {
   Future<void> renewCertificate({
     required String certificateArn,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.RenewCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.RenewCertificate'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -868,10 +824,7 @@ class Acm {
     List<Tag>? tags,
     ValidationMethod? validationMethod,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.RequestCertificate'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.RequestCertificate'};
     final jsonResponse = await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -880,18 +833,14 @@ class Acm {
       headers: headers,
       payload: {
         'DomainName': domainName,
-        if (certificateAuthorityArn != null)
-          'CertificateAuthorityArn': certificateAuthorityArn,
-        if (domainValidationOptions != null)
-          'DomainValidationOptions': domainValidationOptions,
+        if (certificateAuthorityArn != null) 'CertificateAuthorityArn': certificateAuthorityArn,
+        if (domainValidationOptions != null) 'DomainValidationOptions': domainValidationOptions,
         if (idempotencyToken != null) 'IdempotencyToken': idempotencyToken,
         if (keyAlgorithm != null) 'KeyAlgorithm': keyAlgorithm.value,
         if (options != null) 'Options': options,
-        if (subjectAlternativeNames != null)
-          'SubjectAlternativeNames': subjectAlternativeNames,
+        if (subjectAlternativeNames != null) 'SubjectAlternativeNames': subjectAlternativeNames,
         if (tags != null) 'Tags': tags,
-        if (validationMethod != null)
-          'ValidationMethod': validationMethod.value,
+        if (validationMethod != null) 'ValidationMethod': validationMethod.value,
       },
     );
 
@@ -962,10 +911,7 @@ class Acm {
     required String domain,
     required String validationDomain,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.ResendValidationEmail'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.ResendValidationEmail'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -1007,10 +953,7 @@ class Acm {
     required String certificateArn,
     required CertificateOptions options,
   }) async {
-    final headers = <String, String>{
-      'Content-Type': 'application/x-amz-json-1.1',
-      'X-Amz-Target': 'CertificateManager.UpdateCertificateOptions'
-    };
+    final headers = <String, String>{'Content-Type': 'application/x-amz-json-1.1', 'X-Amz-Target': 'CertificateManager.UpdateCertificateOptions'};
     await _protocol.send(
       method: 'POST',
       requestUri: '/',
@@ -1201,49 +1144,27 @@ class CertificateDetail {
       certificateAuthorityArn: json['CertificateAuthorityArn'] as String?,
       createdAt: timeStampFromJson(json['CreatedAt']),
       domainName: json['DomainName'] as String?,
-      domainValidationOptions: (json['DomainValidationOptions'] as List?)
-          ?.nonNulls
-          .map((e) => DomainValidation.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      extendedKeyUsages: (json['ExtendedKeyUsages'] as List?)
-          ?.nonNulls
-          .map((e) => ExtendedKeyUsage.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      failureReason:
-          (json['FailureReason'] as String?)?.let(FailureReason.fromString),
+      domainValidationOptions: (json['DomainValidationOptions'] as List?)?.nonNulls.map((e) => DomainValidation.fromJson(e as Map<String, dynamic>)).toList(),
+      extendedKeyUsages: (json['ExtendedKeyUsages'] as List?)?.nonNulls.map((e) => ExtendedKeyUsage.fromJson(e as Map<String, dynamic>)).toList(),
+      failureReason: (json['FailureReason'] as String?)?.let(FailureReason.fromString),
       importedAt: timeStampFromJson(json['ImportedAt']),
-      inUseBy:
-          (json['InUseBy'] as List?)?.nonNulls.map((e) => e as String).toList(),
+      inUseBy: (json['InUseBy'] as List?)?.nonNulls.map((e) => e as String).toList(),
       issuedAt: timeStampFromJson(json['IssuedAt']),
       issuer: json['Issuer'] as String?,
-      keyAlgorithm:
-          (json['KeyAlgorithm'] as String?)?.let(KeyAlgorithm.fromString),
-      keyUsages: (json['KeyUsages'] as List?)
-          ?.nonNulls
-          .map((e) => KeyUsage.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      keyAlgorithm: (json['KeyAlgorithm'] as String?)?.let(KeyAlgorithm.fromString),
+      keyUsages: (json['KeyUsages'] as List?)?.nonNulls.map((e) => KeyUsage.fromJson(e as Map<String, dynamic>)).toList(),
       notAfter: timeStampFromJson(json['NotAfter']),
       notBefore: timeStampFromJson(json['NotBefore']),
-      options: json['Options'] != null
-          ? CertificateOptions.fromJson(json['Options'] as Map<String, dynamic>)
-          : null,
-      renewalEligibility: (json['RenewalEligibility'] as String?)
-          ?.let(RenewalEligibility.fromString),
-      renewalSummary: json['RenewalSummary'] != null
-          ? RenewalSummary.fromJson(
-              json['RenewalSummary'] as Map<String, dynamic>)
-          : null,
-      revocationReason: (json['RevocationReason'] as String?)
-          ?.let(RevocationReason.fromString),
+      options: json['Options'] != null ? CertificateOptions.fromJson(json['Options'] as Map<String, dynamic>) : null,
+      renewalEligibility: (json['RenewalEligibility'] as String?)?.let(RenewalEligibility.fromString),
+      renewalSummary: json['RenewalSummary'] != null ? RenewalSummary.fromJson(json['RenewalSummary'] as Map<String, dynamic>) : null,
+      revocationReason: (json['RevocationReason'] as String?)?.let(RevocationReason.fromString),
       revokedAt: timeStampFromJson(json['RevokedAt']),
       serial: json['Serial'] as String?,
       signatureAlgorithm: json['SignatureAlgorithm'] as String?,
       status: (json['Status'] as String?)?.let(CertificateStatus.fromString),
       subject: json['Subject'] as String?,
-      subjectAlternativeNames: (json['SubjectAlternativeNames'] as List?)
-          ?.nonNulls
-          .map((e) => e as String)
-          .toList(),
+      subjectAlternativeNames: (json['SubjectAlternativeNames'] as List?)?.nonNulls.map((e) => e as String).toList(),
       type: (json['Type'] as String?)?.let(CertificateType.fromString),
     );
   }
@@ -1277,12 +1198,10 @@ class CertificateDetail {
     final type = this.type;
     return {
       if (certificateArn != null) 'CertificateArn': certificateArn,
-      if (certificateAuthorityArn != null)
-        'CertificateAuthorityArn': certificateAuthorityArn,
+      if (certificateAuthorityArn != null) 'CertificateAuthorityArn': certificateAuthorityArn,
       if (createdAt != null) 'CreatedAt': unixTimestampToJson(createdAt),
       if (domainName != null) 'DomainName': domainName,
-      if (domainValidationOptions != null)
-        'DomainValidationOptions': domainValidationOptions,
+      if (domainValidationOptions != null) 'DomainValidationOptions': domainValidationOptions,
       if (extendedKeyUsages != null) 'ExtendedKeyUsages': extendedKeyUsages,
       if (failureReason != null) 'FailureReason': failureReason.value,
       if (importedAt != null) 'ImportedAt': unixTimestampToJson(importedAt),
@@ -1294,8 +1213,7 @@ class CertificateDetail {
       if (notAfter != null) 'NotAfter': unixTimestampToJson(notAfter),
       if (notBefore != null) 'NotBefore': unixTimestampToJson(notBefore),
       if (options != null) 'Options': options,
-      if (renewalEligibility != null)
-        'RenewalEligibility': renewalEligibility.value,
+      if (renewalEligibility != null) 'RenewalEligibility': renewalEligibility.value,
       if (renewalSummary != null) 'RenewalSummary': renewalSummary,
       if (revocationReason != null) 'RevocationReason': revocationReason.value,
       if (revokedAt != null) 'RevokedAt': unixTimestampToJson(revokedAt),
@@ -1303,8 +1221,7 @@ class CertificateDetail {
       if (signatureAlgorithm != null) 'SignatureAlgorithm': signatureAlgorithm,
       if (status != null) 'Status': status.value,
       if (subject != null) 'Subject': subject,
-      if (subjectAlternativeNames != null)
-        'SubjectAlternativeNames': subjectAlternativeNames,
+      if (subjectAlternativeNames != null) 'SubjectAlternativeNames': subjectAlternativeNames,
       if (type != null) 'Type': type.value,
     };
   }
@@ -1322,8 +1239,7 @@ class CertificateDetail {
 class CertificateOptions {
   /// You can opt out of certificate transparency logging by specifying the
   /// <code>DISABLED</code> option. Opt in by specifying <code>ENABLED</code>.
-  final CertificateTransparencyLoggingPreference?
-      certificateTransparencyLoggingPreference;
+  final CertificateTransparencyLoggingPreference? certificateTransparencyLoggingPreference;
 
   CertificateOptions({
     this.certificateTransparencyLoggingPreference,
@@ -1332,18 +1248,14 @@ class CertificateOptions {
   factory CertificateOptions.fromJson(Map<String, dynamic> json) {
     return CertificateOptions(
       certificateTransparencyLoggingPreference:
-          (json['CertificateTransparencyLoggingPreference'] as String?)
-              ?.let(CertificateTransparencyLoggingPreference.fromString),
+          (json['CertificateTransparencyLoggingPreference'] as String?)?.let(CertificateTransparencyLoggingPreference.fromString),
     );
   }
 
   Map<String, dynamic> toJson() {
-    final certificateTransparencyLoggingPreference =
-        this.certificateTransparencyLoggingPreference;
+    final certificateTransparencyLoggingPreference = this.certificateTransparencyLoggingPreference;
     return {
-      if (certificateTransparencyLoggingPreference != null)
-        'CertificateTransparencyLoggingPreference':
-            certificateTransparencyLoggingPreference.value,
+      if (certificateTransparencyLoggingPreference != null) 'CertificateTransparencyLoggingPreference': certificateTransparencyLoggingPreference.value,
     };
   }
 }
@@ -1363,9 +1275,7 @@ enum CertificateStatus {
   const CertificateStatus(this.value);
 
   static CertificateStatus fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum CertificateStatus'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum CertificateStatus'));
 }
 
 /// This structure is returned in the response object of <a>ListCertificates</a>
@@ -1505,32 +1415,19 @@ class CertificateSummary {
       createdAt: timeStampFromJson(json['CreatedAt']),
       domainName: json['DomainName'] as String?,
       exported: json['Exported'] as bool?,
-      extendedKeyUsages: (json['ExtendedKeyUsages'] as List?)
-          ?.nonNulls
-          .map((e) => ExtendedKeyUsageName.fromString((e as String)))
-          .toList(),
-      hasAdditionalSubjectAlternativeNames:
-          json['HasAdditionalSubjectAlternativeNames'] as bool?,
+      extendedKeyUsages: (json['ExtendedKeyUsages'] as List?)?.nonNulls.map((e) => ExtendedKeyUsageName.fromString((e as String))).toList(),
+      hasAdditionalSubjectAlternativeNames: json['HasAdditionalSubjectAlternativeNames'] as bool?,
       importedAt: timeStampFromJson(json['ImportedAt']),
       inUse: json['InUse'] as bool?,
       issuedAt: timeStampFromJson(json['IssuedAt']),
-      keyAlgorithm:
-          (json['KeyAlgorithm'] as String?)?.let(KeyAlgorithm.fromString),
-      keyUsages: (json['KeyUsages'] as List?)
-          ?.nonNulls
-          .map((e) => KeyUsageName.fromString((e as String)))
-          .toList(),
+      keyAlgorithm: (json['KeyAlgorithm'] as String?)?.let(KeyAlgorithm.fromString),
+      keyUsages: (json['KeyUsages'] as List?)?.nonNulls.map((e) => KeyUsageName.fromString((e as String))).toList(),
       notAfter: timeStampFromJson(json['NotAfter']),
       notBefore: timeStampFromJson(json['NotBefore']),
-      renewalEligibility: (json['RenewalEligibility'] as String?)
-          ?.let(RenewalEligibility.fromString),
+      renewalEligibility: (json['RenewalEligibility'] as String?)?.let(RenewalEligibility.fromString),
       revokedAt: timeStampFromJson(json['RevokedAt']),
       status: (json['Status'] as String?)?.let(CertificateStatus.fromString),
-      subjectAlternativeNameSummaries:
-          (json['SubjectAlternativeNameSummaries'] as List?)
-              ?.nonNulls
-              .map((e) => e as String)
-              .toList(),
+      subjectAlternativeNameSummaries: (json['SubjectAlternativeNameSummaries'] as List?)?.nonNulls.map((e) => e as String).toList(),
       type: (json['Type'] as String?)?.let(CertificateType.fromString),
     );
   }
@@ -1541,8 +1438,7 @@ class CertificateSummary {
     final domainName = this.domainName;
     final exported = this.exported;
     final extendedKeyUsages = this.extendedKeyUsages;
-    final hasAdditionalSubjectAlternativeNames =
-        this.hasAdditionalSubjectAlternativeNames;
+    final hasAdditionalSubjectAlternativeNames = this.hasAdditionalSubjectAlternativeNames;
     final importedAt = this.importedAt;
     final inUse = this.inUse;
     final issuedAt = this.issuedAt;
@@ -1553,33 +1449,26 @@ class CertificateSummary {
     final renewalEligibility = this.renewalEligibility;
     final revokedAt = this.revokedAt;
     final status = this.status;
-    final subjectAlternativeNameSummaries =
-        this.subjectAlternativeNameSummaries;
+    final subjectAlternativeNameSummaries = this.subjectAlternativeNameSummaries;
     final type = this.type;
     return {
       if (certificateArn != null) 'CertificateArn': certificateArn,
       if (createdAt != null) 'CreatedAt': unixTimestampToJson(createdAt),
       if (domainName != null) 'DomainName': domainName,
       if (exported != null) 'Exported': exported,
-      if (extendedKeyUsages != null)
-        'ExtendedKeyUsages': extendedKeyUsages.map((e) => e.value).toList(),
-      if (hasAdditionalSubjectAlternativeNames != null)
-        'HasAdditionalSubjectAlternativeNames':
-            hasAdditionalSubjectAlternativeNames,
+      if (extendedKeyUsages != null) 'ExtendedKeyUsages': extendedKeyUsages.map((e) => e.value).toList(),
+      if (hasAdditionalSubjectAlternativeNames != null) 'HasAdditionalSubjectAlternativeNames': hasAdditionalSubjectAlternativeNames,
       if (importedAt != null) 'ImportedAt': unixTimestampToJson(importedAt),
       if (inUse != null) 'InUse': inUse,
       if (issuedAt != null) 'IssuedAt': unixTimestampToJson(issuedAt),
       if (keyAlgorithm != null) 'KeyAlgorithm': keyAlgorithm.value,
-      if (keyUsages != null)
-        'KeyUsages': keyUsages.map((e) => e.value).toList(),
+      if (keyUsages != null) 'KeyUsages': keyUsages.map((e) => e.value).toList(),
       if (notAfter != null) 'NotAfter': unixTimestampToJson(notAfter),
       if (notBefore != null) 'NotBefore': unixTimestampToJson(notBefore),
-      if (renewalEligibility != null)
-        'RenewalEligibility': renewalEligibility.value,
+      if (renewalEligibility != null) 'RenewalEligibility': renewalEligibility.value,
       if (revokedAt != null) 'RevokedAt': unixTimestampToJson(revokedAt),
       if (status != null) 'Status': status.value,
-      if (subjectAlternativeNameSummaries != null)
-        'SubjectAlternativeNameSummaries': subjectAlternativeNameSummaries,
+      if (subjectAlternativeNameSummaries != null) 'SubjectAlternativeNameSummaries': subjectAlternativeNameSummaries,
       if (type != null) 'Type': type.value,
     };
   }
@@ -1595,9 +1484,7 @@ enum CertificateTransparencyLoggingPreference {
   const CertificateTransparencyLoggingPreference(this.value);
 
   static CertificateTransparencyLoggingPreference fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () => throw Exception(
-              '$value is not known in enum CertificateTransparencyLoggingPreference'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum CertificateTransparencyLoggingPreference'));
 }
 
 enum CertificateType {
@@ -1611,9 +1498,7 @@ enum CertificateType {
   const CertificateType(this.value);
 
   static CertificateType fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum CertificateType'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum CertificateType'));
 }
 
 class DescribeCertificateResponse {
@@ -1626,10 +1511,7 @@ class DescribeCertificateResponse {
 
   factory DescribeCertificateResponse.fromJson(Map<String, dynamic> json) {
     return DescribeCertificateResponse(
-      certificate: json['Certificate'] != null
-          ? CertificateDetail.fromJson(
-              json['Certificate'] as Map<String, dynamic>)
-          : null,
+      certificate: json['Certificate'] != null ? CertificateDetail.fromJson(json['Certificate'] as Map<String, dynamic>) : null,
     );
   }
 
@@ -1652,9 +1534,7 @@ enum DomainStatus {
   const DomainStatus(this.value);
 
   static DomainStatus fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum DomainStatus'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum DomainStatus'));
 }
 
 /// Contains information about the validation of each domain name in the
@@ -1713,19 +1593,11 @@ class DomainValidation {
   factory DomainValidation.fromJson(Map<String, dynamic> json) {
     return DomainValidation(
       domainName: json['DomainName'] as String,
-      resourceRecord: json['ResourceRecord'] != null
-          ? ResourceRecord.fromJson(
-              json['ResourceRecord'] as Map<String, dynamic>)
-          : null,
+      resourceRecord: json['ResourceRecord'] != null ? ResourceRecord.fromJson(json['ResourceRecord'] as Map<String, dynamic>) : null,
       validationDomain: json['ValidationDomain'] as String?,
-      validationEmails: (json['ValidationEmails'] as List?)
-          ?.nonNulls
-          .map((e) => e as String)
-          .toList(),
-      validationMethod: (json['ValidationMethod'] as String?)
-          ?.let(ValidationMethod.fromString),
-      validationStatus:
-          (json['ValidationStatus'] as String?)?.let(DomainStatus.fromString),
+      validationEmails: (json['ValidationEmails'] as List?)?.nonNulls.map((e) => e as String).toList(),
+      validationMethod: (json['ValidationMethod'] as String?)?.let(ValidationMethod.fromString),
+      validationStatus: (json['ValidationStatus'] as String?)?.let(DomainStatus.fromString),
     );
   }
 
@@ -1943,10 +1815,8 @@ enum ExtendedKeyUsageName {
 
   const ExtendedKeyUsageName(this.value);
 
-  static ExtendedKeyUsageName fromString(String value) => values.firstWhere(
-      (e) => e.value == value,
-      orElse: () =>
-          throw Exception('$value is not known in enum ExtendedKeyUsageName'));
+  static ExtendedKeyUsageName fromString(String value) =>
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum ExtendedKeyUsageName'));
 }
 
 enum FailureReason {
@@ -1974,9 +1844,7 @@ enum FailureReason {
   const FailureReason(this.value);
 
   static FailureReason fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum FailureReason'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum FailureReason'));
 }
 
 /// This structure can be used in the <a>ListCertificates</a> action to filter
@@ -2009,8 +1877,7 @@ class Filters {
     final keyTypes = this.keyTypes;
     final keyUsage = this.keyUsage;
     return {
-      if (extendedKeyUsage != null)
-        'extendedKeyUsage': extendedKeyUsage.map((e) => e.value).toList(),
+      if (extendedKeyUsage != null) 'extendedKeyUsage': extendedKeyUsage.map((e) => e.value).toList(),
       if (keyTypes != null) 'keyTypes': keyTypes.map((e) => e.value).toList(),
       if (keyUsage != null) 'keyUsage': keyUsage.map((e) => e.value).toList(),
     };
@@ -2028,10 +1895,7 @@ class GetAccountConfigurationResponse {
 
   factory GetAccountConfigurationResponse.fromJson(Map<String, dynamic> json) {
     return GetAccountConfigurationResponse(
-      expiryEvents: json['ExpiryEvents'] != null
-          ? ExpiryEventsConfiguration.fromJson(
-              json['ExpiryEvents'] as Map<String, dynamic>)
-          : null,
+      expiryEvents: json['ExpiryEvents'] != null ? ExpiryEventsConfiguration.fromJson(json['ExpiryEvents'] as Map<String, dynamic>) : null,
     );
   }
 
@@ -2112,10 +1976,11 @@ enum KeyAlgorithm {
 
   const KeyAlgorithm(this.value);
 
-  static KeyAlgorithm fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum KeyAlgorithm'));
+  static KeyAlgorithm fromString(String value) {
+    final String normalizedValue = value.replaceAll('-', '_');
+
+    return values.firstWhere((e) => e.value == normalizedValue, orElse: () => throw Exception('$value is not known in enum KeyAlgorithm'));
+  }
 }
 
 /// The Key Usage X.509 v3 extension defines the purpose of the public key
@@ -2161,9 +2026,7 @@ enum KeyUsageName {
   const KeyUsageName(this.value);
 
   static KeyUsageName fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum KeyUsageName'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum KeyUsageName'));
 }
 
 class ListCertificatesResponse {
@@ -2182,10 +2045,7 @@ class ListCertificatesResponse {
 
   factory ListCertificatesResponse.fromJson(Map<String, dynamic> json) {
     return ListCertificatesResponse(
-      certificateSummaryList: (json['CertificateSummaryList'] as List?)
-          ?.nonNulls
-          .map((e) => CertificateSummary.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      certificateSummaryList: (json['CertificateSummaryList'] as List?)?.nonNulls.map((e) => CertificateSummary.fromJson(e as Map<String, dynamic>)).toList(),
       nextToken: json['NextToken'] as String?,
     );
   }
@@ -2194,8 +2054,7 @@ class ListCertificatesResponse {
     final certificateSummaryList = this.certificateSummaryList;
     final nextToken = this.nextToken;
     return {
-      if (certificateSummaryList != null)
-        'CertificateSummaryList': certificateSummaryList,
+      if (certificateSummaryList != null) 'CertificateSummaryList': certificateSummaryList,
       if (nextToken != null) 'NextToken': nextToken,
     };
   }
@@ -2211,10 +2070,7 @@ class ListTagsForCertificateResponse {
 
   factory ListTagsForCertificateResponse.fromJson(Map<String, dynamic> json) {
     return ListTagsForCertificateResponse(
-      tags: (json['Tags'] as List?)
-          ?.nonNulls
-          .map((e) => Tag.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      tags: (json['Tags'] as List?)?.nonNulls.map((e) => Tag.fromJson(e as Map<String, dynamic>)).toList(),
     );
   }
 
@@ -2234,9 +2090,8 @@ enum RecordType {
 
   const RecordType(this.value);
 
-  static RecordType fromString(String value) => values.firstWhere(
-      (e) => e.value == value,
-      orElse: () => throw Exception('$value is not known in enum RecordType'));
+  static RecordType fromString(String value) =>
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum RecordType'));
 }
 
 enum RenewalEligibility {
@@ -2248,10 +2103,8 @@ enum RenewalEligibility {
 
   const RenewalEligibility(this.value);
 
-  static RenewalEligibility fromString(String value) => values.firstWhere(
-      (e) => e.value == value,
-      orElse: () =>
-          throw Exception('$value is not known in enum RenewalEligibility'));
+  static RenewalEligibility fromString(String value) =>
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum RenewalEligibility'));
 }
 
 enum RenewalStatus {
@@ -2266,9 +2119,7 @@ enum RenewalStatus {
   const RenewalStatus(this.value);
 
   static RenewalStatus fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum RenewalStatus'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum RenewalStatus'));
 }
 
 /// Contains information about the status of ACM's <a
@@ -2304,15 +2155,10 @@ class RenewalSummary {
 
   factory RenewalSummary.fromJson(Map<String, dynamic> json) {
     return RenewalSummary(
-      domainValidationOptions: (json['DomainValidationOptions'] as List)
-          .nonNulls
-          .map((e) => DomainValidation.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      renewalStatus:
-          RenewalStatus.fromString((json['RenewalStatus'] as String)),
+      domainValidationOptions: (json['DomainValidationOptions'] as List).nonNulls.map((e) => DomainValidation.fromJson(e as Map<String, dynamic>)).toList(),
+      renewalStatus: RenewalStatus.fromString((json['RenewalStatus'] as String)),
       updatedAt: nonNullableTimeStampFromJson(json['UpdatedAt'] as Object),
-      renewalStatusReason: (json['RenewalStatusReason'] as String?)
-          ?.let(FailureReason.fromString),
+      renewalStatusReason: (json['RenewalStatusReason'] as String?)?.let(FailureReason.fromString),
     );
   }
 
@@ -2325,8 +2171,7 @@ class RenewalSummary {
       'DomainValidationOptions': domainValidationOptions,
       'RenewalStatus': renewalStatus.value,
       'UpdatedAt': unixTimestampToJson(updatedAt),
-      if (renewalStatusReason != null)
-        'RenewalStatusReason': renewalStatusReason.value,
+      if (renewalStatusReason != null) 'RenewalStatusReason': renewalStatusReason.value,
     };
   }
 }
@@ -2414,9 +2259,7 @@ enum RevocationReason {
   const RevocationReason(this.value);
 
   static RevocationReason fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum RevocationReason'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum RevocationReason'));
 }
 
 enum SortBy {
@@ -2427,9 +2270,7 @@ enum SortBy {
 
   const SortBy(this.value);
 
-  static SortBy fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () => throw Exception('$value is not known in enum SortBy'));
+  static SortBy fromString(String value) => values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum SortBy'));
 }
 
 enum SortOrder {
@@ -2441,9 +2282,8 @@ enum SortOrder {
 
   const SortOrder(this.value);
 
-  static SortOrder fromString(String value) => values.firstWhere(
-      (e) => e.value == value,
-      orElse: () => throw Exception('$value is not known in enum SortOrder'));
+  static SortOrder fromString(String value) =>
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum SortOrder'));
 }
 
 /// A key-value pair that identifies or specifies metadata about an ACM
@@ -2487,125 +2327,89 @@ enum ValidationMethod {
   const ValidationMethod(this.value);
 
   static ValidationMethod fromString(String value) =>
-      values.firstWhere((e) => e.value == value,
-          orElse: () =>
-              throw Exception('$value is not known in enum ValidationMethod'));
+      values.firstWhere((e) => e.value == value, orElse: () => throw Exception('$value is not known in enum ValidationMethod'));
 }
 
 class AccessDeniedException extends _s.GenericAwsException {
-  AccessDeniedException({String? type, String? message})
-      : super(type: type, code: 'AccessDeniedException', message: message);
+  AccessDeniedException({String? type, String? message}) : super(type: type, code: 'AccessDeniedException', message: message);
 }
 
 class ConflictException extends _s.GenericAwsException {
-  ConflictException({String? type, String? message})
-      : super(type: type, code: 'ConflictException', message: message);
+  ConflictException({String? type, String? message}) : super(type: type, code: 'ConflictException', message: message);
 }
 
 class InvalidArgsException extends _s.GenericAwsException {
-  InvalidArgsException({String? type, String? message})
-      : super(type: type, code: 'InvalidArgsException', message: message);
+  InvalidArgsException({String? type, String? message}) : super(type: type, code: 'InvalidArgsException', message: message);
 }
 
 class InvalidArnException extends _s.GenericAwsException {
-  InvalidArnException({String? type, String? message})
-      : super(type: type, code: 'InvalidArnException', message: message);
+  InvalidArnException({String? type, String? message}) : super(type: type, code: 'InvalidArnException', message: message);
 }
 
 class InvalidDomainValidationOptionsException extends _s.GenericAwsException {
   InvalidDomainValidationOptionsException({String? type, String? message})
-      : super(
-            type: type,
-            code: 'InvalidDomainValidationOptionsException',
-            message: message);
+      : super(type: type, code: 'InvalidDomainValidationOptionsException', message: message);
 }
 
 class InvalidParameterException extends _s.GenericAwsException {
-  InvalidParameterException({String? type, String? message})
-      : super(type: type, code: 'InvalidParameterException', message: message);
+  InvalidParameterException({String? type, String? message}) : super(type: type, code: 'InvalidParameterException', message: message);
 }
 
 class InvalidStateException extends _s.GenericAwsException {
-  InvalidStateException({String? type, String? message})
-      : super(type: type, code: 'InvalidStateException', message: message);
+  InvalidStateException({String? type, String? message}) : super(type: type, code: 'InvalidStateException', message: message);
 }
 
 class InvalidTagException extends _s.GenericAwsException {
-  InvalidTagException({String? type, String? message})
-      : super(type: type, code: 'InvalidTagException', message: message);
+  InvalidTagException({String? type, String? message}) : super(type: type, code: 'InvalidTagException', message: message);
 }
 
 class LimitExceededException extends _s.GenericAwsException {
-  LimitExceededException({String? type, String? message})
-      : super(type: type, code: 'LimitExceededException', message: message);
+  LimitExceededException({String? type, String? message}) : super(type: type, code: 'LimitExceededException', message: message);
 }
 
 class RequestInProgressException extends _s.GenericAwsException {
-  RequestInProgressException({String? type, String? message})
-      : super(type: type, code: 'RequestInProgressException', message: message);
+  RequestInProgressException({String? type, String? message}) : super(type: type, code: 'RequestInProgressException', message: message);
 }
 
 class ResourceInUseException extends _s.GenericAwsException {
-  ResourceInUseException({String? type, String? message})
-      : super(type: type, code: 'ResourceInUseException', message: message);
+  ResourceInUseException({String? type, String? message}) : super(type: type, code: 'ResourceInUseException', message: message);
 }
 
 class ResourceNotFoundException extends _s.GenericAwsException {
-  ResourceNotFoundException({String? type, String? message})
-      : super(type: type, code: 'ResourceNotFoundException', message: message);
+  ResourceNotFoundException({String? type, String? message}) : super(type: type, code: 'ResourceNotFoundException', message: message);
 }
 
 class TagPolicyException extends _s.GenericAwsException {
-  TagPolicyException({String? type, String? message})
-      : super(type: type, code: 'TagPolicyException', message: message);
+  TagPolicyException({String? type, String? message}) : super(type: type, code: 'TagPolicyException', message: message);
 }
 
 class ThrottlingException extends _s.GenericAwsException {
-  ThrottlingException({String? type, String? message})
-      : super(type: type, code: 'ThrottlingException', message: message);
+  ThrottlingException({String? type, String? message}) : super(type: type, code: 'ThrottlingException', message: message);
 }
 
 class TooManyTagsException extends _s.GenericAwsException {
-  TooManyTagsException({String? type, String? message})
-      : super(type: type, code: 'TooManyTagsException', message: message);
+  TooManyTagsException({String? type, String? message}) : super(type: type, code: 'TooManyTagsException', message: message);
 }
 
 class ValidationException extends _s.GenericAwsException {
-  ValidationException({String? type, String? message})
-      : super(type: type, code: 'ValidationException', message: message);
+  ValidationException({String? type, String? message}) : super(type: type, code: 'ValidationException', message: message);
 }
 
 final _exceptionFns = <String, _s.AwsExceptionFn>{
-  'AccessDeniedException': (type, message) =>
-      AccessDeniedException(type: type, message: message),
-  'ConflictException': (type, message) =>
-      ConflictException(type: type, message: message),
-  'InvalidArgsException': (type, message) =>
-      InvalidArgsException(type: type, message: message),
-  'InvalidArnException': (type, message) =>
-      InvalidArnException(type: type, message: message),
-  'InvalidDomainValidationOptionsException': (type, message) =>
-      InvalidDomainValidationOptionsException(type: type, message: message),
-  'InvalidParameterException': (type, message) =>
-      InvalidParameterException(type: type, message: message),
-  'InvalidStateException': (type, message) =>
-      InvalidStateException(type: type, message: message),
-  'InvalidTagException': (type, message) =>
-      InvalidTagException(type: type, message: message),
-  'LimitExceededException': (type, message) =>
-      LimitExceededException(type: type, message: message),
-  'RequestInProgressException': (type, message) =>
-      RequestInProgressException(type: type, message: message),
-  'ResourceInUseException': (type, message) =>
-      ResourceInUseException(type: type, message: message),
-  'ResourceNotFoundException': (type, message) =>
-      ResourceNotFoundException(type: type, message: message),
-  'TagPolicyException': (type, message) =>
-      TagPolicyException(type: type, message: message),
-  'ThrottlingException': (type, message) =>
-      ThrottlingException(type: type, message: message),
-  'TooManyTagsException': (type, message) =>
-      TooManyTagsException(type: type, message: message),
-  'ValidationException': (type, message) =>
-      ValidationException(type: type, message: message),
+  'AccessDeniedException': (type, message) => AccessDeniedException(type: type, message: message),
+  'ConflictException': (type, message) => ConflictException(type: type, message: message),
+  'InvalidArgsException': (type, message) => InvalidArgsException(type: type, message: message),
+  'InvalidArnException': (type, message) => InvalidArnException(type: type, message: message),
+  'InvalidDomainValidationOptionsException': (type, message) => InvalidDomainValidationOptionsException(type: type, message: message),
+  'InvalidParameterException': (type, message) => InvalidParameterException(type: type, message: message),
+  'InvalidStateException': (type, message) => InvalidStateException(type: type, message: message),
+  'InvalidTagException': (type, message) => InvalidTagException(type: type, message: message),
+  'LimitExceededException': (type, message) => LimitExceededException(type: type, message: message),
+  'RequestInProgressException': (type, message) => RequestInProgressException(type: type, message: message),
+  'ResourceInUseException': (type, message) => ResourceInUseException(type: type, message: message),
+  'ResourceNotFoundException': (type, message) => ResourceNotFoundException(type: type, message: message),
+  'TagPolicyException': (type, message) => TagPolicyException(type: type, message: message),
+  'ThrottlingException': (type, message) => ThrottlingException(type: type, message: message),
+  'TooManyTagsException': (type, message) => TooManyTagsException(type: type, message: message),
+  'ValidationException': (type, message) => ValidationException(type: type, message: message),
 };
